@@ -1,0 +1,257 @@
+html {
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.list-reset {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  position: relative;
+  background: url('../img/img.jpg') no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  color: #fff;
+  border-radius: 10px;
+  padding: 30px 40px;
+}
+
+.nonogram {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.nonogram .header {
+  display: flex;
+}
+
+.row {
+  display: flex;
+  align-items: stretch;
+}
+
+.row span {
+  margin: auto;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgb(240, 123, 234);
+  background-color: rgb(153, 41, 228);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cell.cross::after {
+  content: 'X';
+}
+
+
+.filled {
+  background-color: black;
+}
+
+.hint {
+  padding: 0 5px;
+  font-size: 20px;
+  width: 50px;
+  display: flex;
+  gap: 5px;
+  background-color: rgb(223, 84, 211);
+  border: 1px solid rgb(240, 123, 234);
+}
+
+.row .hint {
+  border-right: none;
+}
+
+.nonogram>.row:nth-child(-n+2) {
+  border-top: 3px solid #000;
+}
+
+.nonogram>.row:nth-child(-n+2) .cell,
+.nonogram>.row:nth-child(-n+2) .hint {
+  border-top: none;
+}
+
+.header .hint:nth-child(2) {
+  border-left: 3px solid #000;
+}
+
+.header .hint {
+  border-bottom: none;
+}
+
+.row .cell:not(:nth-child(n+3)) {
+  border-left: 3px solid black;
+}
+
+.header .hint {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header .cell {
+  border: none;
+  opacity: 0;
+  pointer-events: none;
+  background-color: transparent;
+  justify-content: flex-end;
+}
+
+.header .cell::after {
+  content: '';
+}
+
+.btn-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restart-btn {
+  background-color: rgb(223, 84, 211);
+  padding: 15px;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.theme-toggler {
+  width: 50px;
+  cursor: pointer;
+  background-color: rgb(223, 84, 211);
+  border-radius: 15px;
+  padding: 7px;
+  transition: background-color 0.4s ease;
+}
+
+.theme-img {
+  display: block;
+  margin: 0;
+}
+
+.restart-btn:hover,
+.theme-toggler:hover {
+  background-color: #df84d7;
+}
+
+/* dark theme */
+
+body.dark::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(102,37,103);
+  background: radial-gradient(circle, rgb(33, 1, 34) 10%, rgba(69,11,68,1) 100%);
+}
+
+.wrapper.dark .cell {
+  border: 1px solid rgb(121, 13, 113);
+  background-color: rgb(77, 31, 107);
+}
+
+.wrapper.dark .hint {
+  background-color: rgb(94, 8, 86);
+  border: 1px solid rgb(121, 13, 113);
+  color: #e7a2de;
+}
+
+.wrapper.dark .restart-btn {
+  background-color: rgb(82, 13, 76);
+
+}
+
+.wrapper.dark .theme-toggler {
+  background-color: rgb(82, 13, 76);
+}
+
+.wrapper.dark .theme-img {
+  display: block;
+  margin: 0;
+  filter: invert(1);
+}
+
+.wrapper.dark .restart-btn {
+  color: #e7a2de;
+}
+
+.wrapper.dark .restart-btn:hover,
+.wrapper.dark .theme-toggler:hover {
+  background-color: #8a1180;
+}
+
+.wrapper.dark .row .cell:not(:nth-child(n+3)) {
+  border-left: 3px solid black;
+}
+
+.wrapper .header .hint:nth-child(2) {
+  border-left: 3px solid #000;
+}
+
+.wrapper.dark .btn-box span {
+  color: #e7a2de;
+}
+
+.wrapper.dark .filled {
+  background-color: rgb(0, 0, 0);
+}
+
+.wrapper.dark .cell.cross::after {
+  content: 'X';
+  color: #000;
+}
